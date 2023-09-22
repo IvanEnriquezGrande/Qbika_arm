@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Webcam Feed</title>
+</head>
+<body>
+    <h1>Real-Time Webcam Feed</h1>
+    <img id="displayedImage" style="max-width:100%;" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <script type="text/javascript">
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        socket.on('connect', function() {
+            console.log('Connected to the server.');
+        });
+
+        socket.on('display_image', function(image_data) {
+            // Update the displayed image with the received data
+            document.getElementById('displayedImage').src = 'data:image/jpeg;base64,' + image_data;
+        });
+    </script>
+</body>
+</html>

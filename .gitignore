@@ -1,0 +1,7 @@
+/venv/
+*_pb2.py
+*receiveWebcam.py
+img/*
+*.whl
+/.idea/
+*__pycache__*
